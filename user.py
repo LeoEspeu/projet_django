@@ -15,8 +15,8 @@ foo.first_name = 'John'
 foo.last_name = 'Doe'
 foo.save()
 
-#validate_password('passoire')
-#validate_password('motdepasse')
+validate_password('passoire')
+validate_password('motdepasse')
 pprint(vars(foo))
 
 bar = User.objects.create_user('bar',password='passoire',first_name='Alan',last_name='Smithee')
@@ -51,3 +51,43 @@ print(msg)
 
 msg = Message.objects.filter(sender=foo)[0]
 print(msg)
+
+result = Message.objects.get_or_create(body='texte')
+print(result)
+
+result = msg6.delete()
+print(result)
+
+pprint(vars(msg6))
+
+result = Message.objects.filter(pk=5).delete()
+print(result)
+
+len(Message.objects.all())
+
+Message.objects.count()
+
+if Message.objects.filter(sender=foo):
+    print('Au moins un msg envoyé par foo.')
+
+superuser = User.objects.get(pk=1)
+Message.objects.filter(sender=foo).exists() and 'ok'
+Message.objects.filter(sender=superuser).exists() and 'ok'
+
+msg = Message.objects.get(pk=1)
+msg.subject = 'sujet4'
+msg.save()
+
+Message.objects.filter(pk=1).update(subject='sujet4-2')
+
+msgs = [Message(
+    subject='Annonce',
+    sender=superuser,
+    body='Demain, le site sera fermé pour maintenance.',
+    recipient=user
+) for user in User.objects.all()]
+
+Message.objects.bulk_create(msgs)
+
+result = Message.objects.in_bulk([7,8,9])
+pprint(result)

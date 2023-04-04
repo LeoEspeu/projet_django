@@ -1,0 +1,20 @@
+[
+  {
+    "model": "messenger.message",
+    "fields": {
+      "subject": "Bienvenue",
+      "body": "Texte d'accueil.",
+      "sender": 1,
+      "recipient": 5
+    }
+  },
+  {
+    "model": "messenger.message",
+    "fields": {
+      "subject": "Bienvenue",
+      "body": "Texte d'accueil.",
+      "sender": 1,
+      "recipient": 6
+    }
+  }
+]

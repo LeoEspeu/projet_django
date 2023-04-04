@@ -26,6 +26,18 @@ class Message(models.Model):
     sent_at = models.DateTimeField(
         "envoyé le", default=now)
 
+    read_at = models.DateTimeField(
+        "lu le", null=True, blank=True
+    )
+
+    sender_deleted_at = models.DateTimeField(
+        "effacé par expéditeur le", null=True, blank=True
+    )
+
+    recipient_deleted_at = models.DateTimeField(
+        "effacé par destinataire", null=True, blank=True
+    )
+
     objects = models.Manager()
     recent_object = MessageManager()
 
