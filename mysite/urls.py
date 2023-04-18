@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include,path
-from mysite.main import views
+from django.views.generic import TemplateView
+
+# from mysite.main import views
 from django.urls import re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index),
+    # path('',views.index), # remplacé par
+    path('',TemplateView.as_view(template_name='index.html')),
     # path('messenger/',include(
     #     'mysite.messenger.urls',namespace='messenger'
     # )),

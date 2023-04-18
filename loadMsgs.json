@@ -1,0 +1,110 @@
+[
+{
+  "model": "messenger.message",
+  "pk": 1,
+  "fields": {
+    "subject": "sujet4-2",
+    "body": "",
+    "sender": 5,
+    "recipient": 6,
+    "sent_at": "2023-03-30T11:37:15.161"
+  }
+},
+{
+  "model": "messenger.message",
+  "pk": 2,
+  "fields": {
+    "subject": "sujet",
+    "body": "texte",
+    "sender": 5,
+    "recipient": 6,
+    "sent_at": "2023-03-30T11:37:15.187"
+  }
+},
+{
+  "model": "messenger.message",
+  "pk": 3,
+  "fields": {
+    "subject": "sujet",
+    "body": "texte révisé",
+    "sender": 5,
+    "recipient": 6,
+    "sent_at": "2023-03-30T11:37:15.187"
+  }
+},
+{
+  "model": "messenger.message",
+  "pk": 5,
+  "fields": {
+    "subject": "Annonce",
+    "body": "Demain, le site sera fermé pour maintenance.",
+    "sender": 1,
+    "recipient": 1,
+    "sent_at": "2023-03-30T17:52:12.264"
+  }
+},
+{
+  "model": "messenger.message",
+  "pk": 6,
+  "fields": {
+    "subject": "Annonce",
+    "body": "Demain, le site sera fermé pour maintenance.",
+    "sender": 1,
+    "recipient": 5,
+    "sent_at": "2023-03-30T17:52:12.264"
+  }
+},
+{
+  "model": "messenger.message",
+  "pk": 7,
+  "fields": {
+    "subject": "Annonce",
+    "body": "Demain, le site sera fermé pour maintenance.",
+    "sender": 1,
+    "recipient": 6,
+    "sent_at": "2023-03-30T17:52:12.264"
+  }
+},
+{
+  "model": "messenger.message",
+  "pk": 8,
+  "fields": {
+    "subject": "Annonce fffffff",
+    "body": "Demain, le site sera fermé pour maintenance.ffffffffff",
+    "sender": 1,
+    "recipient": 5,
+    "sent_at": "2023-03-30T17:52:12.264"
+  }
+},
+{
+  "model": "messenger.message",
+  "pk": 9,
+  "fields": {
+    "subject": "Annonce llllll",
+    "body": "Demain, le site sera fermé pour maintenance.lllllllll",
+    "sender": 1,
+    "recipient": 6,
+    "sent_at": "2023-03-30T17:52:12.264"
+  }
+},
+{
+  "model": "messenger.message",
+  "fields": {
+    "subject": "Annonce copie 1",
+    "body": "Demain, le site sera fermé pour maintenance.copie 1",
+    "sender": 1,
+    "recipient": 5,
+    "sent_at": "2023-03-30T17:52:12.264"
+  }
+},
+{
+  "model": "messenger.message",
+  "fields": {
+    "subject": "Annonce copie 2",
+    "body": "Demain, le site sera fermé pour maintenance.copie 2",
+    "sender": 1,
+    "recipient": 6,
+    "sent_at": "2023-03-30T17:52:12.264"
+  }
+}
+]

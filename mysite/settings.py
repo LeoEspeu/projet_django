@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'mysite.toolbox.middleware.WatcherMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -61,13 +62,20 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                # 'django.template.context_processors.debug',
+                # 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                # 'django.contrib.messages.context_processors.messages',
+                'mysite.messenger.context_processors.inbox',
             ],
         },
     },
+    {
+        'NAME': 'django_light',
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(_SITE_ROOT, 'templates')],
+        'APP_DIRS': True,
+    }
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
@@ -128,3 +136,60 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '{asctime}_{name}_{levelname} - {message}',
+            'style': '{',
+        }
+    },
+    'handlers': {
+        'console_debug': { # inspiré du 'console' par défaut
+            'level': 'DEBUG',
+            # pas nécessaire car implicité
+            # 'filters': ['require_debut_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+        'file_appending': {
+            'class': 'logging.FileHandler',
+            'formatter': 'simple',
+            'filename': os.path.join(_SITE_ROOT, 'logs/app.log'),
+        },
+        'file_rotating': {
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'formatter': 'simple',
+            'filename': os.path.join(_SITE_ROOT, 'logs/time.log'),
+            'when': 's',
+            'interval': 15,
+            'backupCount': 3,
+        },
+        'remote': {
+            'class': 'logging.handlers.DatagramHandler',
+            'host': 'localhost',
+            'port': 9696,
+        }
+    },
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['console_debug'],
+            # DEBUG pour voir les requêtes
+            # INFO pour revenir à la normale
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'messenger': {
+            #'handlers': ['file_appending'],
+            #'handlers': ['file_rotating'],
+            'handlers': ['remote'],
+            'level': 'DEBUG',
+        },
+        'messenger.views': {
+            'handlers': ['console_debug'],
+            'level': 'DEBUG',
+        },
+    }
+}
